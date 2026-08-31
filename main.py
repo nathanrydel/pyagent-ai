@@ -38,7 +38,7 @@ def generate_content(client: OpenAI, messages: list, verbose: bool) -> None:
         model="openrouter/free",
         messages=messages,
         tools=available_functions,
-        temperature=0,
+        # temperature=0,
     )
 
     if not response.usage:

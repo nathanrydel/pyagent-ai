@@ -49,3 +49,31 @@ def format_result(completed: subprocess.CompletedProcess) -> str:
     if completed.returncode != 0:
         parts.append(f"Process exited with code {completed.returncode}")
     return "\n".join(parts)
+
+
+schema_run_python_file = {
+    "type": "function",
+    "function": {
+        "name": "run_python_file",
+        "description": (
+            "Executes a Python file relative to the working directory with an "
+            "optional list of command-line arguments, and returns its stdout, "
+            "stderr, and exit code"
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "file_path": {
+                    "type": "string",
+                    "description": "Path to the Python file to execute, relative to the working directory",
+                },
+                "args": {
+                    "type": "array",
+                    "items": {"type": "string"},
+                    "description": "Optional list of command-line arguments to pass to the Python file",
+                },
+            },
+            "required": ["file_path"],
+        },
+    },
+}
