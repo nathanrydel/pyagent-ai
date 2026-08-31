@@ -2,9 +2,9 @@ from functions.common import resolve_within
 from functions.errors import PathTraversalError
 
 
-def write_file(working_dir: str, file_path: str, content: str) -> str:
+def write_file(working_directory: str, file_path: str, content: str) -> str:
     try:
-        target = resolve_within(working_dir, file_path, "write to")
+        target = resolve_within(working_directory, file_path, "write to")
         if target.is_dir():
             raise IsADirectoryError(
                 f'Cannot write to "{file_path}" as it is a directory'

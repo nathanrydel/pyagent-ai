@@ -5,11 +5,11 @@ from functions.common import resolve_within
 from functions.errors import PathTraversalError
 
 
-def get_files_info(working_dir: str, dir: str) -> str:
+def get_files_info(working_directory: str, directory: str = ".") -> str:
     try:
-        target = resolve_within(working_dir, dir, "list")
+        target = resolve_within(working_directory, directory, "list")
         if not target.is_dir():
-            raise NotADirectoryError(f'"{dir}" is not a directory')
+            raise NotADirectoryError(f'"{directory}" is not a directory')
         return format_directory_content(target)
     except (PathTraversalError, OSError) as e:
         return f"Error: {e}"

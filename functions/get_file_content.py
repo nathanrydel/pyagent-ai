@@ -6,9 +6,9 @@ from functions.errors import NotAFileError, PathTraversalError
 MAX_CHARS = 10_000
 
 
-def get_file_content(working_dir: str, file_path: str) -> str:
+def get_file_content(working_directory: str, file_path: str) -> str:
     try:
-        target = resolve_within(working_dir, file_path, "read")
+        target = resolve_within(working_directory, file_path, "read")
         if not target.is_file():
             raise NotAFileError(f"File not found or is not a regular file: {file_path}")
         return read_file(target, file_path)

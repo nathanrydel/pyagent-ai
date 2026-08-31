@@ -8,11 +8,11 @@ TIMEOUT_SECONDS = 30
 
 
 def run_python_file(
-    working_dir: str, file_path: str, args: list[str] | None = None
+    working_directory: str, file_path: str, args: list[str] | None = None
 ) -> str:
     try:
-        base = Path(working_dir).resolve()
-        target = resolve_within(working_dir, file_path, "execute")
+        base = Path(working_directory).resolve()
+        target = resolve_within(working_directory, file_path, "execute")
         if not target.is_file():
             raise NotAFileError(
                 f'"{file_path}" does not exist or is not a regular file'
